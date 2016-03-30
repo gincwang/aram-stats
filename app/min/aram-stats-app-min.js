@@ -1,0 +1,1 @@
+angular.module("AramStats",[]).controller("MainCtrl",function(n){n.name="",n.region="NA"});
