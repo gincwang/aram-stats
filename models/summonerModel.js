@@ -7,6 +7,6 @@ var client = new pg.Client(connectionString);
 
 client.connect();
 
-var query = client.query('CREATE TABLE summoner(id INTEGER PRIMARY KEY, name VARCHAR(24) not null)');
+var query = client.query('CREATE TABLE summoner(id INTEGER PRIMARY KEY, base_name VARCHAR(24) not null, format_name VARCHAR(24) not null, profile_icon INTEGER not null)');
 
 query.on('end', function(){ client.end; });
