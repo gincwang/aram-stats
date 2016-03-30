@@ -18,8 +18,9 @@
                 </div>
             </div>
             <div class='row'>
-                <h3 ng-show="summary.total_kills" class='ng-hide'>Total Kills: {{summary.total_kills}}</h3>
-                <h3 ng-show="summary.wins" class='ng-hide'>Win Total: {{summary.wins}}</h3>
+                <h3 ng-show="invalidName">Summoner Name Invalid</h3>
+                <h3 ng-show="summary.total_kills">Total Kills: {{summary.total_kills}}</h3>
+                <h3 ng-show="summary.wins">Win Total: {{summary.wins}}</h3>
             </div>
         </div>
     </div>

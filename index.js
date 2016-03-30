@@ -27,14 +27,17 @@ io.on('connection', function(socket){
         console.log('user disconnected');
     });
 
+    //main method for receiving get summoner stat request
     socket.on('get summoner', function(name){
+        //make sure summoner name doesn't have any special character/spacing
+        name = name.replace(/\W/g, '').toLowerCase();
         console.log('summoner name received: ' + name);
         pg.connect(connectionString, function(err, client, done){
             if(err){
                 done();
                 console.log(err);
             }
-            var queryString = "SELECT id FROM summoner WHERE name='" + name + "'";
+            var queryString = "SELECT id FROM summoner WHERE  base_name='" + name + "'";
             client.query(queryString, function(err, result){
                 if(err){
                     done();
@@ -47,7 +50,13 @@ io.on('connection', function(socket){
                         riotSeeder.getSummonerID(name)
                             .then(function(id){
                                 console.log('rp promise: ' + id);
-                                querySummonerMatches(id);
+                                if(id !== -1){
+                                    querySummonerMatches(id);
+                                }
+                            })
+                            .catch(function(err){
+                                console.log(err)
+                                io.emit('summoner not found', err);
                             });
                     }
                     else {
@@ -99,9 +108,8 @@ function returnStats(id){
                     console.log(err);
                 }
                 else {
-                    console.log(result);
                     if(result.rowCount > 0){
-                        io.emit('return summary stat', result.rows[0]);    
+                        io.emit('return summary stat', result.rows[0]);
                     }
                 }
                 done();
