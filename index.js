@@ -6,12 +6,14 @@ var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/riot';
 
 var riotSeeder = require(__dirname + '/lib/riotAPI.js');
+var queries = require(__dirname + '/lib/commonQueries.js');
 
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use('/app', express.static(__dirname + '/app'));
 
 
 //SPA ROUTING
+//Serves only index.html
 app.get('/*', function(req, res){
     var options = {
         root: __dirname + '/'
@@ -27,16 +29,21 @@ io.on('connection', function(socket){
         console.log('user disconnected');
     });
 
+    //POSTGRESQL
     //main method for receiving get summoner stat request
     socket.on('get summoner', function(name){
         //make sure summoner name doesn't have any special character/spacing
         name = name.replace(/\W/g, '').toLowerCase();
         console.log('summoner name received: ' + name);
+        //connect to database pool
         pg.connect(connectionString, function(err, client, done){
             if(err){
                 done();
                 console.log(err);
             }
+            //query database if summoner ID already exists
+            //If exists, fire off request to search recent matches
+            //If doesn't exist, fire off request to search for summoner ID based on name, stores it to database, then request recent matches
             var queryString = "SELECT id FROM summoner WHERE  base_name='" + name + "'";
             client.query(queryString, function(err, result){
                 if(err){
@@ -51,6 +58,7 @@ io.on('connection', function(socket){
                             .then(function(id){
                                 console.log('rp promise: ' + id);
                                 if(id !== -1){
+                                    //request API to get recent games associated with the summonerID
                                     querySummonerMatches(id);
                                 }
                             })
@@ -64,6 +72,7 @@ io.on('connection', function(socket){
                         //request API to get recent games associated with the summonerID
                         querySummonerMatches(summonerID);
                     }
+                    //close db connection
                     done();
                 }
             }.bind(this));
@@ -77,45 +86,36 @@ io.on('connection', function(socket){
 
 });
 
+//Requests summoner's recent matches,
+//If successful, query summoner's stat summary
 function querySummonerMatches(summonerID){
     console.log('found summoner: ' + summonerID);
     riotSeeder.getRecentMatches(summonerID)
         .then(function(id){
             console.log(id);
             querySummonerSummary(id);
+        })
+        .then(function(err){
+            console.log(err);
         });
 }
 
+//Requests summoner's stat summary
+//If successful, send relevant data back to client
 function querySummonerSummary(summonerID){
     console.log('found matches');
     riotSeeder.getSummary(summonerID)
         .then(function(id){
             returnStats(id);
+        })
+        .then(function(err){
+            console.log(err);
         });
 }
 
+//
 function returnStats(id){
-    var stats = {};
-    pg.connect(connectionString, function(err, client, done){
-        if(err){
-            done();
-            console.log(err);
-        }
-        else {
-            var queryString = "SELECT total_kills, wins FROM summary WHERE summoner_id = " + id;
-            client.query(queryString, function(err, result){
-                if(err){
-                    console.log(err);
-                }
-                else {
-                    if(result.rowCount > 0){
-                        io.emit('return summary stat', result.rows[0]);
-                    }
-                }
-                done();
-            })
-        }
-    });
+    queries.getSummonerStats(id, io);
 }
 
 http.listen(8080, function(){
