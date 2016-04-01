@@ -41,41 +41,10 @@ io.on('connection', function(socket){
                 done();
                 console.log(err);
             }
-            //query database if summoner ID already exists
-            //If exists, fire off request to search recent matches
-            //If doesn't exist, fire off request to search for summoner ID based on name, stores it to database, then request recent matches
-            var queryString = "SELECT id FROM summoner WHERE  base_name='" + name + "'";
-            client.query(queryString, function(err, result){
-                if(err){
-                    done();
-                    console.log(err);
-                }
-                else {
-                    if(result.rowCount === 0){
-                        //summoner not in database, need to fetch api
-                        console.log('summoner not found in DB');
-                        riotSeeder.getSummonerID(name)
-                            .then(function(id){
-                                console.log('rp promise: ' + id);
-                                if(id !== -1){
-                                    //request API to get recent games associated with the summonerID
-                                    querySummonerMatches(id);
-                                }
-                            })
-                            .catch(function(err){
-                                console.log(err)
-                                io.emit('summoner not found', err);
-                            });
-                    }
-                    else {
-                        var summonerID = result.rows[0].id;
-                        //request API to get recent games associated with the summonerID
-                        querySummonerMatches(summonerID);
-                    }
-                    //close db connection
-                    done();
-                }
-            }.bind(this));
+
+            //go out and query Riot API for latest data
+            querySummoner(name, client, done);
+
         })
     });
 
@@ -83,8 +52,47 @@ io.on('connection', function(socket){
     socket.on('received recent matches', function(matches){
         console.log('found matches: ' + matches);
     });
-
 });
+
+
+//query database if summoner ID already exists
+//If exists, fire off request to search recent matches
+//If doesn't exist, fire off request to search for summoner ID based on name, stores it to database, then request recent matches
+function querySummoner(name, client, done){
+
+    var queryString = "SELECT id FROM summoner WHERE  base_name='" + name + "'";
+    client.query(queryString, function(err, result){
+        if(err){
+            done();
+            console.log(err);
+        }
+        else {
+            if(result.rowCount === 0){
+                //summoner not in database, need to fetch api
+                console.log('summoner not found in DB');
+                riotSeeder.getSummonerID(name)
+                    .then(function(id){
+                        console.log('rp promise: ' + id);
+                        if(id !== -1){
+                            //request API to get recent games associated with the summonerID
+                            querySummonerMatches(id);
+                        }
+                    })
+                    .catch(function(err){
+                        console.log(err)
+                        io.emit('summoner not found', err);
+                    });
+            }
+            else {
+                var summonerID = result.rows[0].id;
+                //request API to get recent games associated with the summonerID
+                querySummonerMatches(summonerID);
+            }
+            //close db connection
+            done();
+        }
+    });
+}
 
 //Requests summoner's recent matches,
 //If successful, query summoner's stat summary
