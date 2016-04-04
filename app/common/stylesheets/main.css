@@ -81,6 +81,7 @@ td {
     font-weight: 300;
     letter-spacing: 2px;
     font-size: 1.6em;
+
 }
 
 /*SUMMONER.HTML*/
@@ -221,6 +222,7 @@ td {
     .navFormStyle {
         padding-top: 5px;
         width: 80%;
+        margin: 10px 0;
     }
 
     .topThreeChampionUl {
