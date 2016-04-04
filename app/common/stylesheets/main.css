@@ -1,0 +1,197 @@
+body {
+    background-color: #F5F5F5;
+    font-family: 'Roboto', sans-serif;
+}
+
+table {
+    display: table;
+    border-collapse: collapse;
+    border-color: #ccc;
+    width: 100%;
+    height: 100%;
+}
+
+tfoot {
+    display: table-footer-group;;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 8px;
+}
+
+td {
+    font-size: 3.1em;
+    font-weight: 300;
+}
+
+.win {color: #1565C0;}
+.death {color: #B71C1C;}
+.kill {color: #43A047;}
+.assist {color: ##9E9E9E;}
+.kda {color: #FF9800;}
+.turret {color: #795548;}
+
+.navStyle {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.navTitle {
+    font-weight: 300;
+    font-size: 3em;
+    letter-spacing: 4px;
+}
+
+.navFormStyle {
+    padding-top: 2px;
+    width: 40%;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 1.6em;
+}
+
+/*SUMMONER.HTML*/
+.profileStyle {
+    margin-bottom: 30px;
+}
+
+.profileIconStyle {
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profileText {
+    font-weight: 300;
+    letter-spacing: 3px;
+    font-size: 2.5em;
+}
+
+.categoryTitle {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.categoryTitleSubText {
+    font-size: 1.5em;
+}
+
+.categoryTitleBorder {
+    border-bottom: 1px solid gray;
+    display: inline-block;
+    padding: 0 50px;
+}
+
+.categoryTitleWrap {
+    text-align: center;
+}
+
+
+.summaryStyle {
+    text-align: center;
+}
+
+.boxPaddings {
+    padding: 10px 5px;
+}
+
+.summaryStyleKDA {
+    text-align: center;
+}
+
+.summaryStyleKDACol {
+    padding-top: 10px;
+}
+
+.summaryStyleKDAColInner {
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 20px;
+    height: 150px;
+}
+
+.summaryStyleLifetime {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.summaryStyleLifetimeCol {
+    display: block;
+    padding: 30px;
+    border: 1px solid lightgray;
+    background-color: white;
+}
+
+.summaryStat {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.topThreeChampionUl {
+    display: flex;
+    justify-content: space-around;
+}
+
+.topThreeChampionLi {
+
+}
+
+.topThreeKDACol {
+    border: 1px solid lightgray;
+    background-color: white;
+    height: 285px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.highlightHeader {
+    font-size: 1.5em;
+}
+
+.largeNumber {
+    font-size: 5.5em;
+    font-weight: 300;
+}
+
+.mediumNumber {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.championIconStyle {
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.championName {
+    font-size: 1.5em;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+@media (max-width: 768px){
+    .navFormStyle {
+        padding-top: 5px;
+        width: 80%;
+    }
+}
