@@ -1,0 +1,86 @@
+<div class='summaryStyle row'>
+    <div class='col-sm-12'>
+        <div class='profileStyle'>
+            <div class='profileIconStyle' ng-class='summonerCtrl.profileClass'></div>
+            <h2 class='profileText'>{{summonerCtrl.stats.summary.format_name}}</h2>
+        </div>
+    </div>
+</div>
+<div class='row summaryStyleKDA' ng-show='summonerCtrl.stats.kda'>
+    <div class='col-sm-12'><p class='categoryTitleWrap'><span class='categoryTitleBorder'><span class='categoryTitle'>Average Stats</span><span class='categoryTitleSubText'>  /{{summonerCtrl.stats.kda.count}}games</span></span></p></div>
+    <div class='col-sm-6 boxPaddings'>
+        <div class='summaryStyleKDAColInner'>
+            <div><span class='largeNumber kda'>{{summonerCtrl.stats.kda.kda}}</span><span> KDA</span></div>
+        </div>
+    </div>
+    <div class='col-sm-6 boxPaddings'>
+        <div class='summaryStyleKDAColInner'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class='kill'>{{summonerCtrl.stats.kda.total_kills}}</td>
+                        <td class='death'>{{summonerCtrl.stats.kda.total_deaths}}</td>
+                        <td class='assist'>{{summonerCtrl.stats.kda.total_assists}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                         <th>Kills</th>
+                         <th>Deaths</th>
+                         <th>Assists</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div class='row summaryStyleLifetime' ng-show='summonerCtrl.stats.summary'>
+    <div class='col-sm-12'><p class='categoryTitleWrap'><span class='categoryTitleBorder'><span class='categoryTitle'>Career Total</span></span></p></div>
+    <div class='col-sm-3 boxPaddings'>
+        <div class='summaryStyleLifetimeCol'>
+            <h2 class='summaryStat win'>{{summonerCtrl.stats.summary.wins}}</h2>
+            <h5>Wins</h5>
+        </div>
+    </div>
+    <div class='col-sm-3 boxPaddings'>
+        <div class='summaryStyleLifetimeCol'>
+            <h2 class='summaryStat kill'>{{summonerCtrl.stats.summary.total_kills}}</h2>
+            <h5>Kills</h5>
+        </div>
+    </div>
+    <div class='col-sm-3 boxPaddings'>
+        <div class='summaryStyleLifetimeCol'>
+            <h2 class='summaryStat assist'>{{summonerCtrl.stats.summary.total_assists}}</h2>
+            <h5>Assists</h5>
+        </div>
+    </div>
+    <div class='col-sm-3 boxPaddings'>
+        <div class='summaryStyleLifetimeCol'>
+            <h2 class='summaryStat turret'>{{summonerCtrl.stats.summary.total_turrets}}</h2>
+            <h5>Turret Takedowns</h5>
+        </div>
+    </div>
+</div>
+<div class='row' ng-show='summonerCtrl.stats.topThreeKDA'>
+        <div class='col-sm-12'><p class='categoryTitleWrap'><span class='categoryTitleBorder'><span class='categoryTitle'>Game Highlights</span></span></p></div>
+        <div class='col-sm-3 boxPaddings'>
+            <div class='topThreeKDACol'>
+                <p class='highlightHeader'>Highest In-Game Kills</p>
+                <div class='championIconStyle' ng-class='summonerCtrl.mostKillChampionClass'></div>
+                <p class='championName'>{{summonerCtrl.stats.mostKills.champion_name}}</p>
+                <p class='mediumNumber'>{{summonerCtrl.stats.mostKills.champions_killed}}</p>
+            </div>
+        </div>
+        <div class='col-sm-9 boxPaddings'>
+            <div class='topThreeKDACol'>
+                <p class='highlightHeader'>Highest KDA Champions</p>
+                <ul class='topThreeChampionUl'>
+                    <li class='topThreeChampionLi' ng-repeat='champion in summonerCtrl.stats.topThreeKDA'>
+                        <div class='championIconStyle' ng-class='summonerCtrl.topThreeKDAClass[$index]'></div>
+                        <p class='championName'>{{champion.champion_name}}</p>
+                        <p class='mediumNumber'>{{champion.kda}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</div>
