@@ -31,7 +31,16 @@ ARAM Stats is built with:
 ##### How do I use this app?
 To use this web app, you must have an active League of Legends account (create account/download the game here: https://signup.na.leagueoflegends.com/en/signup/index?realm_key=na), and you must have played a game of in ARAM mode in your last 10 games to see any data.
 ##### How about if I just want to see the app in action without any account? 
-You can check out me and a few of my friends accounts for evaluation:
+You can check out mine and a few of my friends accounts for evaluation:
 * ragingoat
 * haywires
 * ebpally
+
+##### How did you build your app?
+* I first set up a local postgres server (9.5 or above to get the newest features such as ON CONFLICT/IF NOT EXISTS) using node.js and expressJS for development.
+* Get Riot API Key to start playing with json data, and narrow down the essential data to store into my local database.
+  * I ended up creating 4 tables: summoner, champion, game, and summary.
+  * This makes it easier to join the tables while making queries, getting exact summoner/champion info as needed. Most of the changes to data occur in game and summary tables.
+  * Set up all the queries I care about, such as overall KDA(Kill-death-assist ratio), most kills, or most gold earned and build into a routine for easy retrieval.
+* Once all the queried data return correctly, develop client side app using AngularJS for displaying data.
+* Deploy using heroku.
