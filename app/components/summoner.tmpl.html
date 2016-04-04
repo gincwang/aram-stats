@@ -10,7 +10,7 @@
     <div class='col-sm-12'><p class='categoryTitleWrap'><span class='categoryTitleBorder'><span class='categoryTitle'>Average Stats</span><span class='categoryTitleSubText'>  /{{summonerCtrl.stats.kda.count}}games</span></span></p></div>
     <div class='col-sm-6 boxPaddings'>
         <div class='summaryStyleKDAColInner'>
-            <div><span class='largeNumber kda'>{{summonerCtrl.stats.kda.kda}}</span><span> KDA</span></div>
+            <div><span class='largeNumber kda'>{{summonerCtrl.stats.kda.kda}}</span><span class='smallLabel'> KDA</span></div>
         </div>
     </div>
     <div class='col-sm-6 boxPaddings'>
@@ -25,9 +25,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                         <th>Kills</th>
-                         <th>Deaths</th>
-                         <th>Assists</th>
+                         <th class='smallLabel'>Kills</th>
+                         <th class='smallLabel'>Deaths</th>
+                         <th class='smallLabel'>Assists</th>
                     </tr>
                 </tfoot>
             </table>
@@ -39,36 +39,37 @@
     <div class='col-sm-3 boxPaddings'>
         <div class='summaryStyleLifetimeCol'>
             <h2 class='summaryStat win'>{{summonerCtrl.stats.summary.wins}}</h2>
-            <h5>Wins</h5>
+            <p class='smallLabel'>Wins</p>
         </div>
     </div>
     <div class='col-sm-3 boxPaddings'>
         <div class='summaryStyleLifetimeCol'>
             <h2 class='summaryStat kill'>{{summonerCtrl.stats.summary.total_kills}}</h2>
-            <h5>Kills</h5>
+            <p class='smallLabel'>Kills</p>
         </div>
     </div>
     <div class='col-sm-3 boxPaddings'>
         <div class='summaryStyleLifetimeCol'>
             <h2 class='summaryStat assist'>{{summonerCtrl.stats.summary.total_assists}}</h2>
-            <h5>Assists</h5>
+            <p class='smallLabel'>Assists</>
         </div>
     </div>
     <div class='col-sm-3 boxPaddings'>
         <div class='summaryStyleLifetimeCol'>
             <h2 class='summaryStat turret'>{{summonerCtrl.stats.summary.total_turrets}}</h2>
-            <h5>Turret Takedowns</h5>
+            <p class='smallLabel'>Turrets</p>
         </div>
     </div>
 </div>
 <div class='row' ng-show='summonerCtrl.stats.topThreeKDA'>
+        <!-- Next Row -->
         <div class='col-sm-12'><p class='categoryTitleWrap'><span class='categoryTitleBorder'><span class='categoryTitle'>Game Highlights</span></span></p></div>
         <div class='col-sm-3 boxPaddings'>
             <div class='topThreeKDACol'>
-                <p class='highlightHeader'>Highest In-Game Kills</p>
+                <p class='highlightHeader'>Highest Kills</p>
                 <div class='championIconStyle' ng-class='summonerCtrl.mostKillChampionClass'></div>
                 <p class='championName'>{{summonerCtrl.stats.mostKills.champion_name}}</p>
-                <p class='mediumNumber'>{{summonerCtrl.stats.mostKills.champions_killed}}</p>
+                <p class='mediumNumber'>{{summonerCtrl.stats.mostKills.champions_killed}}<span class='smallLabel'> Kills</span></p>
             </div>
         </div>
         <div class='col-sm-9 boxPaddings'>
@@ -78,9 +79,67 @@
                     <li class='topThreeChampionLi' ng-repeat='champion in summonerCtrl.stats.topThreeKDA'>
                         <div class='championIconStyle' ng-class='summonerCtrl.topThreeKDAClass[$index]'></div>
                         <p class='championName'>{{champion.champion_name}}</p>
-                        <p class='mediumNumber'>{{champion.kda}}</p>
+                        <p class='mediumNumber'>{{champion.kda}}<span class='smallLabel'> KDA</span></p>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <!-- Next Row -->
+        <div class='col-sm-9 boxPaddings'>
+            <div class='topThreeKDACol'>
+                <ul class='topThreeChampionUl'>
+                    <li class='topThreeChampionLi' ng-show='summonerCtrl.stats.maxDmgDealt'>
+                        <p class='highlightHeader'>Most Damage Dealt</p>
+                        <div class='championIconStyle' ng-class='summonerCtrl.highestDmgDealtClass'></div>
+                        <p class='championName'>{{summonerCtrl.stats.maxDmgDealt.champion_name}}</p>
+                        <p class='mediumNumber'>{{(summonerCtrl.stats.maxDmgDealt.total_dmg_dealt/1000).toFixed(1)}}k</p>
+                    </li>
+                    <li class='topThreeChampionLi' ng-show='summonerCtrl.stats.maxDmgTaken'>
+                        <p class='highlightHeader'>Most Damage Taken</p>
+                        <div class='championIconStyle' ng-class='summonerCtrl.highestDmgTakenClass'></div>
+                        <p class='championName'>{{summonerCtrl.stats.maxDmgTaken.champion_name}}</p>
+                        <p class='mediumNumber'>{{(summonerCtrl.stats.maxDmgTaken.total_dmg_taken/1000).toFixed(1)}}k</p>
+                    </li>
+                    <li class='topThreeChampionLi' ng-show='summonerCtrl.stats.maxHeal'>
+                        <p class='highlightHeader'>Most Heal Performed</p>
+                        <div class='championIconStyle' ng-class='summonerCtrl.highestHealClass'></div>
+                        <p class='championName'>{{summonerCtrl.stats.maxHeal.champion_name}}</p>
+                        <p class='mediumNumber'>{{(summonerCtrl.stats.maxHeal.total_heal/1000).toFixed(1)}}k</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class='col-sm-3 boxPaddings'>
+            <div class='topThreeKDACol'>
+                <p class='highlightHeader'>Largest Killing Spree</p>
+                <div class='championIconStyle' ng-class='summonerCtrl.highestKillingSpreeClass'></div>
+                <p class='championName'>{{summonerCtrl.stats.maxKillingSpree.champion_name}}</p>
+                <p class='mediumNumber'>{{summonerCtrl.stats.maxKillingSpree.largest_killing_spree}}</p></p>
+            </div>
+        </div>
+        <!-- Next Row -->
+        <div class='col-sm-4 boxPaddings'>
+            <div class='topThreeKDACol'>
+                <p class='highlightHeader'>Max Gold Earned</p>
+                <div class='championIconStyle' ng-class='summonerCtrl.highestGoldEarnedClass'></div>
+                <p class='championName'>{{summonerCtrl.stats.maxGold.champion_name}}</p>
+                <p class='mediumNumber'>{{(summonerCtrl.stats.maxGold.gold_earned/1000).toFixed(1)}}k</p></p>
+            </div>
+        </div>
+        <div class='col-sm-4 boxPaddings'>
+            <div class='topThreeKDACol'>
+                <p class='highlightHeader'>Most Minion Kills</p>
+                <div class='championIconStyle' ng-class='summonerCtrl.highestMinionKillsClass'></div>
+                <p class='championName'>{{summonerCtrl.stats.maxMinionKills.champion_name}}</p>
+                <p class='mediumNumber'>{{summonerCtrl.stats.maxMinionKills.minion_kills}}</p></p>
+            </div>
+        </div>
+        <div class='col-sm-4 boxPaddings'>
+            <div class='topThreeKDACol'>
+                <p class='highlightHeader'>Highest Deaths</p>
+                <div class='championIconStyle' ng-class='summonerCtrl.highestDeathsClass'></div>
+                <p class='championName'>{{summonerCtrl.stats.maxDeaths.champion_name}}</p>
+                <p class='mediumNumber'>{{summonerCtrl.stats.maxDeaths.num_deaths}}<span class='smallLabel'> Deaths</span></p></p>
             </div>
         </div>
 </div>

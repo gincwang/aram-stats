@@ -21,6 +21,13 @@ angular.module('aramStats.components.summoner', [
         summonerCtrl.profileClass = '';
         summonerCtrl.mostKillChampionClass = '';
         summonerCtrl.topThreeKDAClass = [];
+        summonerCtrl.highestKillingSpreeClass = '';
+        summonerCtrl.highestDmgDealtClass = '';
+        summonerCtrl.highestDmgTakenClass = '';
+        summonerCtrl.highestHealClass = '';
+        summonerCtrl.highestGoldEarnedClass = '';
+        summonerCtrl.highestDeathsClass = '';
+        summonerCtrl.highestMinionKillsClass = '';
         summonerCtrl.stats = $stateParams.data;
         processSummonerStats(summonerCtrl.stats);
 
@@ -35,6 +42,27 @@ angular.module('aramStats.components.summoner', [
                 summonerCtrl.topThreeKDAClass = stats.topThreeKDA.map(function(em){
                     return setChampionClass(em.champion_key);
                 });
+            }
+            if(stats.maxKillingSpree){
+                summonerCtrl.highestKillingSpreeClass = setChampionClass(stats.maxKillingSpree.champion_key);
+            }
+            if(stats.maxDmgDealt){
+                summonerCtrl.highestDmgDealtClass = setChampionClass(stats.maxDmgDealt.champion_key);
+            }
+            if(stats.maxDmgTaken){
+                summonerCtrl.highestDmgTakenClass = setChampionClass(stats.maxDmgTaken.champion_key);
+            }
+            if(stats.maxHeal){
+                summonerCtrl.highestHealClass = setChampionClass(stats.maxHeal.champion_key);
+            }
+            if(stats.maxGold){
+                summonerCtrl.highestGoldEarnedClass = setChampionClass(stats.maxGold.champion_key);
+            }
+            if(stats.maxDeaths){
+                summonerCtrl.highestDeathsClass = setChampionClass(stats.maxDeaths.champion_key);
+            }
+            if(stats.maxMinionKills){
+                summonerCtrl.highestMinionKillsClass = setChampionClass(stats.maxMinionKills.champion_key);
             }
         }
 

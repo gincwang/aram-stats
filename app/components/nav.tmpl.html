@@ -1,7 +1,14 @@
-<div class='navStyle'>
-    <h2 class='navTitle'>Aram Stats</h2>
-    <form ng-submit="navCtrl.getSummonerStats(navCtrl.summonerName)">
-            <input type='text' class='input-lg navFormStyle' placeholder='Enter your summoner name' ng-model='navCtrl.summonerName'>
-        <button class='btn btn-primary btn-lg'>Search</button>
-    </form>
+<div class='row navbar navbar-default navStyle'>
+    <div class='col-sm-5 navTitleWrap'>
+        <span class='navTitle'>ARAM Stats</span>
+    </div>
+    <div class='col-sm-7 navSubTextWrap'>
+        <span class='navSubText'> Analytics for the die-hard ARAM players</span>
+    </div>
+    <div class='col-sm-12'>
+        <form ng-submit="navCtrl.getSummonerStats(navCtrl.summonerName)">
+                <input type='text' class='input-lg navFormStyle' placeholder='Enter your summoner name' ng-model='navCtrl.summonerName'>
+            <button class='btn btn-primary btn-lg'>Search</button>
+        </form>
+    </div>
 </div>
