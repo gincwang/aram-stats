@@ -4,6 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/riot';
+var port = process.env.PORT || 8080;
 
 var riotSeeder = require(__dirname + '/lib/riotAPI.js');
 var queries = require(__dirname + '/lib/commonQueries.js');
@@ -126,6 +127,6 @@ function returnStats(id){
     queries.getSummonerStats(id, io);
 }
 
-http.listen(8080, function(){
-    console.log('Listening on port 8080');
+http.listen(port, function(){
+    console.log('Listening on port...' + port);
 });
