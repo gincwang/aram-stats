@@ -3,6 +3,7 @@
 //stores the champion info for each champion id
 function createChampionModel(){
     var pg = require('pg');
+    pg.defaults.ssl = true;
     var riotSeeder = require('../lib/riotAPI.js');
     var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/riot';
     var client = new pg.Client(connectionString);

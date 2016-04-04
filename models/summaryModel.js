@@ -3,6 +3,7 @@
 //stores the summoner stats summary for aram
 function createSummaryModel(){
     var pg = require('pg');
+    pg.defaults.ssl = true;
     var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/riot';
     var client = new pg.Client(connectionString);
 

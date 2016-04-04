@@ -3,6 +3,7 @@
 //stores the summoner ID for each summoner name
 function createSummonerModel(){
     var pg = require('pg');
+    pg.defaults.ssl = true;
     var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/riot';
     var client = new pg.Client(connectionString);
 
