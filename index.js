@@ -6,11 +6,13 @@ var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/riot';
 var port = process.env.PORT || 8080;
 
+//import database setters
 var summonerSchema = require(__dirname + '/models/summonerModel.js');
 var championSchema = require(__dirname + '/models/championModel.js');
 var summarySchema = require(__dirname + '/models/summaryModel.js');
 var gameSchema = require(__dirname + '/models/gameModel.js');
 
+//import API/query libs
 var riotSeeder = require(__dirname + '/lib/riotAPI.js');
 var queries = require(__dirname + '/lib/commonQueries.js');
 
