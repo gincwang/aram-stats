@@ -164,6 +164,7 @@ td {
 .topThreeChampionUl {
     display: flex;
     justify-content: space-around;
+    flex-flow: row;
 }
 
 .topThreeChampionLi {
@@ -173,7 +174,7 @@ td {
 .topThreeKDACol {
     border: 1px solid lightgray;
     background-color: white;
-    height: 285px;
+    min-height: 285px;
     text-align: center;
     padding-top: 15px;
 }
@@ -220,5 +221,9 @@ td {
     .navFormStyle {
         padding-top: 5px;
         width: 80%;
+    }
+
+    .topThreeChampionUl {
+        flex-flow: column;
     }
 }
