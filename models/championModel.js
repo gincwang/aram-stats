@@ -34,7 +34,7 @@ function createChampionModel(){
                     title = result.data[champKey].title;
                     name = result.data[champKey].name;
                     key = result.data[champKey].key;
-                    queryString = "INSERT INTO champion (champion_id, champion_title, champion_name, champion_ey) VALUES (" + champion_id + ", $$" + title + "$$, $$" + name + "$$, $$" + key + "$$) ON CONFLICT (champion_id) DO NOTHING";
+                    queryString = "INSERT INTO champion (champion_id, champion_title, champion_name, champion_key) VALUES (" + champion_id + ", $$" + title + "$$, $$" + name + "$$, $$" + key + "$$) ON CONFLICT DO NOTHING";
                     console.log(queryString);
                     client.query(queryString, function(err){
                         if(err){console.log(err); client.end;}
