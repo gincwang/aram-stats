@@ -10,7 +10,7 @@ var queries = require(__dirname + '/lib/commonQueries.js');
 
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use('/app', express.static(__dirname + '/app'));
-
+app.use('/app/common/models', express.static(__dirname + '/app/common/models'));
 
 //SPA ROUTING
 //Serves only index.html
@@ -33,7 +33,7 @@ io.on('connection', function(socket){
     //main method for receiving get summoner stat request
     socket.on('get summoner', function(name){
         //make sure summoner name doesn't have any special character/spacing
-        name = name.replace(/\W/g, '').toLowerCase();
+        //name = name.replace(/\W/g, '').toLowerCase();
         console.log('summoner name received: ' + name);
         //connect to database pool
         pg.connect(connectionString, function(err, client, done){
@@ -60,11 +60,11 @@ io.on('connection', function(socket){
 //If doesn't exist, fire off request to search for summoner ID based on name, stores it to database, then request recent matches
 function querySummoner(name, client, done){
 
-    var queryString = "SELECT id FROM summoner WHERE  base_name='" + name + "'";
+    var queryString = "SELECT summoner_id FROM summoner WHERE  base_name='" + name + "'";
     client.query(queryString, function(err, result){
         if(err){
+            console.log('error querying from querySummoner');
             done();
-            console.log(err);
         }
         else {
             if(result.rowCount === 0){
@@ -84,7 +84,7 @@ function querySummoner(name, client, done){
                     });
             }
             else {
-                var summonerID = result.rows[0].id;
+                var summonerID = result.rows[0].summoner_id;
                 //request API to get recent games associated with the summonerID
                 querySummonerMatches(summonerID);
             }
@@ -103,7 +103,7 @@ function querySummonerMatches(summonerID){
             console.log(id);
             querySummonerSummary(id);
         })
-        .then(function(err){
+        .catch(function(err){
             console.log(err);
         });
 }
@@ -116,7 +116,7 @@ function querySummonerSummary(summonerID){
         .then(function(id){
             returnStats(id);
         })
-        .then(function(err){
+        .catch(function(err){
             console.log(err);
         });
 }
