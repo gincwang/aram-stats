@@ -4,7 +4,7 @@ angular.module('aramStats', [
         'aramStats.components.nav',
         'aramStats.components.summoner'
     ])
-    .config(function($stateProvider, $urlRouterProvider){
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider){
         $stateProvider
             .state('aramStats', {
                 url: '',
@@ -12,4 +12,7 @@ angular.module('aramStats', [
             });
 
         $urlRouterProvider.otherwise('/');
+
+        //use HTML5 History API
+        $locationProvider.html5Mode(true);
     });
