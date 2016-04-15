@@ -95,11 +95,29 @@ io.on('connection', function(socket){
                             console.log(err)
                             io.emit('summoner not found', err);
                         });
+
                 }
                 else {
                     var summonerID = result.rows[0].summoner_id;
-                    //request API to get recent games associated with the summonerID
-                    querySummonerMatches(summonerID);
+                    //75% of the time, directly query summoner matches, but %25 of the time do query the summoner result once more in case user has changed summoner icon etc.
+                    if(Math.random() >= 0.25){
+                        //request API to get recent games associated with the summonerID
+                        querySummonerMatches(summonerID);
+                    }
+                    else {
+                        riotSeeder.getSummonerID(name)
+                            .then(function(id){
+                                console.log('rp promise: ' + id);
+                                if(id !== -1){
+                                    //request API to get recent games associated with the summonerID
+                                    querySummonerMatches(id);
+                                }
+                            })
+                            .catch(function(err){
+                                console.log(err)
+                                io.emit('summoner not found', err);
+                            });
+                    }
                 }
                 //close db connection
                 done();
