@@ -23,10 +23,4 @@ angular.module('aramStats.components.nav', [
             socket.emit('get summoner', name);
         }
 
-        //Receives data returned from server,
-        //Only go to new path after summoner data is returned
-        socket.on('finish result query', function(result){
-            $state.go('aramStats.main.summoner', {name: navCtrl.summonerName, data: result});
-        })
-
     });

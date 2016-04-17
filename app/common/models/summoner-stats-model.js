@@ -10,7 +10,11 @@ angular.module('aramStats.models.summonerStats', [
             return summonerStats;
         };
 
-        model.setStats = function(stats){
+        model.replaceStats = function(stats){
             summonerStats = stats;
+        };
+
+        model.addStat = function(name, stat){
+            summonerStats[name] = stat;
         }
     });

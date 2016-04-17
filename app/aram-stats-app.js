@@ -15,4 +15,13 @@ angular.module('aramStats', [
 
         //use HTML5 History API
         $locationProvider.html5Mode(true);
+    })
+    .controller('MainCtrl', function MainCtrl($state, $scope, summonerStatsModel){
+        $scope.stats = summonerStatsModel.getStats();
+
+        socket.on('finish result query', function(stat){
+            var summonerName = stat.summary.base_name;
+            summonerStatsModel.addStat(summonerName, stat);
+            $state.go('aramStats.main.summoner', {name: summonerName});
+        })
     });
