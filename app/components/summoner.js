@@ -4,7 +4,7 @@ angular.module('aramStats.components.summoner', [
     .config(function($stateProvider){
         $stateProvider
             .state('aramStats.main.summoner', {
-                url: '/summoner/:name',
+                url: '^/summoner/:name',
                 views: {
                     'summoner@': {
                         controller: 'SummonerCtrl as summonerCtrl',
@@ -16,8 +16,11 @@ angular.module('aramStats.components.summoner', [
                 }
             });
     })
-    .controller('SummonerCtrl', function SummonerCtrl($stateParams){
+    .controller('SummonerCtrl', function SummonerCtrl($stateParams, $scope, summonerStatsModel){
         var summonerCtrl = this;
+
+        //sets the current view's model based on parent scope's stats object
+        summonerCtrl.stats = $scope.stats[$stateParams.name];
         summonerCtrl.profileClass = '';
         summonerCtrl.mostKillChampionClass = '';
         summonerCtrl.topThreeKDAClass = [];
@@ -28,7 +31,6 @@ angular.module('aramStats.components.summoner', [
         summonerCtrl.highestGoldEarnedClass = '';
         summonerCtrl.highestDeathsClass = '';
         summonerCtrl.highestMinionKillsClass = '';
-        summonerCtrl.stats = $stateParams.data;
         processSummonerStats(summonerCtrl.stats);
 
         function processSummonerStats(stats){
