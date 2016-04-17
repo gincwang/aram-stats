@@ -1,0 +1,53 @@
+$bgColor: #EEEEEE;
+$mainFont: 'Roboto', sans-serif;
+$tablet: 768px;
+
+body {
+    background-color: $bgColor;
+    font-family: $mainFont;
+}
+
+table {
+    display: table;
+    border-collapse: collapse;
+    border-color: #ccc;
+    width: 100%;
+    height: 100%;
+}
+
+tfoot {
+    display: table-footer-group;;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 8px;
+}
+
+td {
+    font-size: 3.1em;
+    font-weight: 300;
+}
+
+.win {color: #1565C0;}
+.death {color: #B71C1C;}
+.kill {color: #43A047;}
+.assist {color: #9E9E9E;}
+.kda {color: #FF9800;}
+.turret {color: #795548;}

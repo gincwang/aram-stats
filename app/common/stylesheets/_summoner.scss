@@ -1,0 +1,169 @@
+/*SUMMONER.HTML*/
+.profileStyle {
+    margin: 30px 0;
+
+    .profileIconStyle {
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: scale(1);
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+            transform: scaleX(1.1) scaleY(0.9);
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            height:100%;
+            width: 100%;
+            background: radial-gradient(circle at 40px 40px, rgba(255, 255, 255, 0.4), rgba(0,0,0, 0.3));
+            display: block;
+            border-radius: 50%;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+            border-radius: 50%;
+            transform: translateY(63px) rotate3d(1,0,0,75deg);
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .profileText {
+        font-weight: 300;
+        letter-spacing: 3px;
+        font-size: 2.5em;
+    }
+}
+
+.categoryTitleWrap {
+    text-align: center;
+
+    .categoryTitleBorder {
+        border-bottom: 1px solid gray;
+        display: inline-block;
+        padding: 0 50px;
+
+        .categoryTitle {
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .categoryTitleSubText {
+            font-size: 1.5em;
+        }
+    }
+}
+
+.boxPaddings {
+    padding: 10px 5px;
+}
+
+.mainBoxStyle {
+    border: 1px solid lightgray;
+    background-color: white;
+    &:hover {
+        border: 1px solid #F57F17;
+    }
+}
+
+
+.summaryStyle {
+    text-align: center;
+}
+
+.summaryStyleKDA {
+    text-align: center;
+}
+
+.summaryStyleKDACol {
+    padding-top: 10px;
+}
+
+.summaryStyleKDAColInner {
+    @extend .mainBoxStyle;
+    padding: 20px;
+    height: 150px;
+}
+
+.summaryStyleLifetime {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.summaryStyleLifetimeCol {
+    @extend .mainBoxStyle;
+    display: block;
+    padding: 30px;
+}
+
+.summaryStat {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.topThreeChampionUl {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row;
+}
+
+.topThreeChampionLi {
+
+}
+
+.topThreeKDACol {
+    @extend .mainBoxStyle;
+    min-height: 285px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.highlightHeader {
+    font-size: 1.5em;
+}
+
+.largeNumber {
+    font-size: 5.5em;
+    font-weight: 300;
+}
+
+.mediumNumber {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.championIconStyle {
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 2px 10px 0 gray;
+    transform: translateY(0);
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: translateY(-7px);
+    }
+}
+
+.championName {
+    font-size: 1.5em;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.smallLabel {
+    font-weight: 300;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+}
+
+@media screen and (max-width: 768px){
+    .topThreeChampionUl {
+        flex-flow: column;
+    }
+}
