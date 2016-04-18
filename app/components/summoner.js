@@ -21,7 +21,7 @@ angular.module('aramStats.components.summoner', [
 
         //sets the current view's model based on parent scope's stats object
         summonerCtrl.stats = $scope.stats[$stateParams.name];
-        summonerCtrl.profileClass = '';
+        summonerCtrl.profileSrc = '';
         summonerCtrl.mostKillChampionClass = '';
         summonerCtrl.topThreeKDAClass = [];
         summonerCtrl.highestKillingSpreeClass = '';
@@ -35,7 +35,7 @@ angular.module('aramStats.components.summoner', [
 
         function processSummonerStats(stats){
             if(stats.summary){
-                summonerCtrl.profileClass = setProfileClass(stats.summary.profile_icon);
+                summonerCtrl.profileSrc = setProfileSrc(stats.summary.profile_icon);
             }
             if(stats.mostKills){
                 summonerCtrl.mostKillChampionClass = setChampionClass(stats.mostKills.champion_key);
@@ -69,7 +69,7 @@ angular.module('aramStats.components.summoner', [
         }
 
         //helper functions to append image class for image sprites
-        function setProfileClass(num){ return 'profileicon-' + num; }
+        function setProfileSrc(num){ return '/app/assets/images/profileicon/' + num + '.png'; }
         function setItemClass(num){ return 'item-' + num; }
         function setSpellClass(name){ return 'spell-' + name; }
         function setChampionClass(name){ return 'champion-' + name; }

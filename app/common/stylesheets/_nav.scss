@@ -3,10 +3,38 @@
     text-align: center;
     background-color: white;
     border-bottom: 1px solid gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    transition: padding 0.5s linear;
+    &.minify {
+        padding-bottom: 5px;
+        .navTitleWrap {
+            display: inline-block;
+            text-align: center;
+            width: 30%;
+            top: 5px;
+            font-size: 0.7em;
+        }
+        .navSubTextWrap {
+            display: none;
+        }
+        .navForms {
+            width: 70%;
+        }
+        @media screen and (max-width: $tablet){
+            .navForm {
+                width: 100%;
+            }
+        }
+    }
     .navTitleWrap {
         text-align: right;
+        transition: font-size 0.5s ease-in-out;
         @media screen and (max-width: $tablet){
-            text-align: left;
+            text-align: center;
         }
         .navTitle {
             font-weight: 300;
@@ -24,6 +52,9 @@
     }
     .navSubTextWrap {
         text-align: left;
+        @media screen and (max-width: $tablet){
+            text-align: center;
+        }
         .navSubText {
             font-size: 1.7rem;
             line-height: 4;
@@ -32,14 +63,9 @@
     }
     .navFormStyle {
         padding-top: 2px;
-        width: 40%;
+        width: 60%;
         font-weight: 300;
         letter-spacing: 2px;
         font-size: 1.6em;
-        @media screen and (max-width: $tablet){
-            padding-top: 5px;
-            width: 80%;
-            margin: 10px 0;
-        }
     }
 }

@@ -56,12 +56,36 @@ td {
   padding-bottom: 40px;
   text-align: center;
   background-color: white;
-  border-bottom: 1px solid gray; }
+  border-bottom: 1px solid gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  -webkit-transition: padding 0.5s linear;
+  transition: padding 0.5s linear; }
+  .navStyle.minify {
+    padding-bottom: 5px; }
+    .navStyle.minify .navTitleWrap {
+      display: inline-block;
+      text-align: center;
+      width: 30%;
+      top: 5px;
+      font-size: 0.7em; }
+    .navStyle.minify .navSubTextWrap {
+      display: none; }
+    .navStyle.minify .navForms {
+      width: 70%; }
+    @media screen and (max-width: 768px) {
+      .navStyle.minify .navForm {
+        width: 100%; } }
   .navStyle .navTitleWrap {
-    text-align: right; }
+    text-align: right;
+    -webkit-transition: font-size 0.5s ease-in-out;
+    transition: font-size 0.5s ease-in-out; }
     @media screen and (max-width: 768px) {
       .navStyle .navTitleWrap {
-        text-align: left; } }
+        text-align: center; } }
     .navStyle .navTitleWrap .navTitle {
       font-weight: 300;
       font-size: 3em; }
@@ -76,35 +100,31 @@ td {
           transition: letter-spacing 0.5s ease; }
   .navStyle .navSubTextWrap {
     text-align: left; }
+    @media screen and (max-width: 768px) {
+      .navStyle .navSubTextWrap {
+        text-align: center; } }
     .navStyle .navSubTextWrap .navSubText {
       font-size: 1.7rem;
       line-height: 4;
       text-align: left; }
   .navStyle .navFormStyle {
     padding-top: 2px;
-    width: 40%;
+    width: 60%;
     font-weight: 300;
     letter-spacing: 2px;
     font-size: 1.6em; }
-    @media screen and (max-width: 768px) {
-      .navStyle .navFormStyle {
-        padding-top: 5px;
-        width: 80%;
-        margin: 10px 0; } }
 
 /*SUMMONER.HTML*/
 .profileStyle {
   margin: 30px 0; }
   .profileStyle .profileIconStyle {
-    border-radius: 50%;
-    margin-left: auto;
-    margin-right: auto;
     -webkit-transform: scale(1);
             transform: scale(1);
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
     transition: -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out; }
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+    display: inline-block; }
     .profileStyle .profileIconStyle:hover {
       -webkit-transform: scaleX(1.1) scaleY(0.9);
               transform: scaleX(1.1) scaleY(0.9); }
@@ -124,10 +144,12 @@ td {
       background: -webkit-radial-gradient(50% 50%, circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, transparent 50%);
       background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, transparent 50%);
       border-radius: 50%;
-      -webkit-transform: translateY(63px) rotate3d(1, 0, 0, 75deg);
-              transform: translateY(63px) rotate3d(1, 0, 0, 75deg);
+      -webkit-transform: translateY(-60px) rotate3d(1, 0, 0, 75deg);
+              transform: translateY(-60px) rotate3d(1, 0, 0, 75deg);
       width: 100%;
       height: 100%; }
+    .profileStyle .profileIconStyle .profileImg {
+      border-radius: 50%; }
   .profileStyle .profileText {
     font-weight: 300;
     letter-spacing: 3px;
@@ -156,6 +178,7 @@ td {
     border: 1px solid #F57F17; }
 
 .summaryStyle {
+  margin-top: 157px;
   text-align: center; }
 
 .summaryStyleKDA {

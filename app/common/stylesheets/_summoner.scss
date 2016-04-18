@@ -3,11 +3,9 @@
     margin: 30px 0;
 
     .profileIconStyle {
-        border-radius: 50%;
-        margin-left: auto;
-        margin-right: auto;
         transform: scale(1);
         transition: transform 0.3s ease-in-out;
+        display: inline-block;
         &:hover {
             transform: scaleX(1.1) scaleY(0.9);
         }
@@ -26,9 +24,12 @@
             display: block;
             background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
             border-radius: 50%;
-            transform: translateY(63px) rotate3d(1,0,0,75deg);
+            transform: translateY(-60px) rotate3d(1,0,0,75deg);
             width: 100%;
             height: 100%;
+        }
+        .profileImg {
+            border-radius: 50%;
         }
     }
 
@@ -73,6 +74,7 @@
 
 
 .summaryStyle {
+    margin-top: 157px;
     text-align: center;
 }
 
