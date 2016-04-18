@@ -1,4 +1,14 @@
 /*SUMMONER.HTML*/
+
+.mainBoxStyle {
+    border: 1px solid lightgray;
+    background-color: white;
+    &:hover {
+        border: 1px solid #F57F17;
+        background-color: aliceblue;
+    }
+}
+
 .profileStyle {
     margin: 30px 0;
 
@@ -63,15 +73,6 @@
 .boxPaddings {
     padding: 10px 5px;
 }
-
-.mainBoxStyle {
-    border: 1px solid lightgray;
-    background-color: white;
-    &:hover {
-        border: 1px solid #F57F17;
-    }
-}
-
 
 .summaryStyle {
     margin-top: 157px;

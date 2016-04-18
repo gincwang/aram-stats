@@ -115,6 +115,13 @@ td {
     font-size: 1.6em; }
 
 /*SUMMONER.HTML*/
+.mainBoxStyle, .summaryStyleKDAColInner, .summaryStyleLifetimeCol, .topThreeKDACol {
+  border: 1px solid lightgray;
+  background-color: white; }
+  .mainBoxStyle:hover, .summaryStyleKDAColInner:hover, .summaryStyleLifetimeCol:hover, .topThreeKDACol:hover {
+    border: 1px solid #F57F17;
+    background-color: aliceblue; }
+
 .profileStyle {
   margin: 30px 0; }
   .profileStyle .profileIconStyle {
@@ -170,12 +177,6 @@ td {
 
 .boxPaddings {
   padding: 10px 5px; }
-
-.mainBoxStyle, .summaryStyleKDAColInner, .summaryStyleLifetimeCol, .topThreeKDACol {
-  border: 1px solid lightgray;
-  background-color: white; }
-  .mainBoxStyle:hover, .summaryStyleKDAColInner:hover, .summaryStyleLifetimeCol:hover, .topThreeKDACol:hover {
-    border: 1px solid #F57F17; }
 
 .summaryStyle {
   margin-top: 157px;
