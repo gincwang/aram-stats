@@ -19,6 +19,8 @@ angular.module('aramStats', [
     .controller('MainCtrl', function MainCtrl($state, $scope, summonerStatsModel){
         $scope.stats = summonerStatsModel.getStats();
 
+        //Receives data returned from server,
+        //Only go to new path after summoner data is returned
         socket.on('finish result query', function(stat){
             var summonerName = stat.summary.base_name;
             summonerStatsModel.addStat(summonerName, stat);

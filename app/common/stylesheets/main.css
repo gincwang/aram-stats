@@ -192,6 +192,9 @@ td {
       -ms-flex-flow: row;
           flex-flow: row; }
 
+.topThreeChampionLi {
+  position: relative; }
+
 .topThreeKDACol {
   min-height: 285px;
   text-align: center;
@@ -222,6 +225,8 @@ td {
   .championIconStyle:hover {
     -webkit-transform: translateY(-7px);
             transform: translateY(-7px); }
+  .championIconStyle:hover + .statLabelWrap {
+    visibility: visible; }
 
 .championName {
   font-size: 1.5em;
@@ -233,6 +238,32 @@ td {
   font-weight: 300;
   font-size: 1.6rem;
   letter-spacing: 2px; }
+
+.statLabelWrap {
+  position: absolute;
+  visibility: hidden;
+  -webkit-transition: visibility 0s linear;
+  transition: visibility 0s linear;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+  top: -20px;
+  left: 50%;
+  color: white; }
+  .statLabelWrap .statLabel {
+    background-color: orange;
+    padding: 3px 7px;
+    border-radius: 5px; }
+
+.bottomArrow {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid orange;
+  top: 26px;
+  left: 15px; }
 
 @media screen and (max-width: 768px) {
   .topThreeChampionUl {

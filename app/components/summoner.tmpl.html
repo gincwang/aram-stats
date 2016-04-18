@@ -78,6 +78,10 @@
                 <ul class='topThreeChampionUl'>
                     <li class='topThreeChampionLi' ng-repeat='champion in summonerCtrl.stats.topThreeKDA'>
                         <div class='championIconStyle' ng-class='summonerCtrl.topThreeKDAClass[$index]'></div>
+                        <div class='statLabelWrap'>
+                            <p class='statLabel'>{{champion.game_count}}{{champion.game_count > 1 ? "games" : "game"}}</p>
+                            <div class='bottomArrow'></div>
+                        </div>
                         <p class='championName'>{{champion.champion_name}}</p>
                         <p class='mediumNumber'>{{champion.kda}}<span class='smallLabel'> KDA</span></p>
                     </li>
