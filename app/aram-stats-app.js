@@ -26,4 +26,18 @@ angular.module('aramStats', [
             summonerStatsModel.addStat(summonerName, stat);
             $state.go('aramStats.main.summoner', {name: summonerName});
         })
+    })
+    .directive('scroll', function($window){
+        return function(scope, element, attrs){
+            angular.element($window).bind('scroll', function(){
+                var navBarBreakPoint = 100;
+                if(this.pageYOffset < navBarBreakPoint){
+                    angular.element('.navStyle').removeClass('minify');
+                }
+                else if(this.pageYOffset >= navBarBreakPoint){
+                    angular.element('.navStyle').addClass('minify');
+                }
+                scope.$apply();
+            });
+        };
     });
