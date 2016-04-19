@@ -76,14 +76,16 @@ td {
       display: none; }
     .navStyle.minify .navForms {
       width: 70%; }
-    @media screen and (max-width: 768px) {
-      .navStyle.minify .navForm {
+    @media screen and (max-width: 767px) {
+      .navStyle.minify .navTitleWrap {
+        width: 100%; }
+      .navStyle.minify .navForms {
         width: 100%; } }
   .navStyle .navTitleWrap {
     text-align: right;
     -webkit-transition: font-size 0.5s ease-in-out;
     transition: font-size 0.5s ease-in-out; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       .navStyle .navTitleWrap {
         text-align: center; } }
     .navStyle .navTitleWrap .navTitle {
@@ -100,7 +102,7 @@ td {
           transition: letter-spacing 0.5s ease; }
   .navStyle .navSubTextWrap {
     text-align: left; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       .navStyle .navSubTextWrap {
         text-align: center; } }
     .navStyle .navSubTextWrap .navSubText {
@@ -181,6 +183,9 @@ td {
 .summaryStyle {
   margin-top: 157px;
   text-align: center; }
+  @media screen and (max-width: 767px) {
+    .summaryStyle {
+      margin-top: 217px; } }
 
 .summaryStyleKDA {
   text-align: center; }
@@ -289,7 +294,7 @@ td {
   top: 26px;
   left: 15px; }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .topThreeChampionUl {
     -webkit-flex-flow: column;
         -ms-flex-flow: column;

@@ -24,8 +24,11 @@
         .navForms {
             width: 70%;
         }
-        @media screen and (max-width: $tablet){
-            .navForm {
+        @media screen and (max-width: $phone){
+            .navTitleWrap {
+                width: 100%;
+            }
+            .navForms {
                 width: 100%;
             }
         }
@@ -33,7 +36,7 @@
     .navTitleWrap {
         text-align: right;
         transition: font-size 0.5s ease-in-out;
-        @media screen and (max-width: $tablet){
+        @media screen and (max-width: $phone){
             text-align: center;
         }
         .navTitle {
@@ -52,7 +55,7 @@
     }
     .navSubTextWrap {
         text-align: left;
-        @media screen and (max-width: $tablet){
+        @media screen and (max-width: $phone){
             text-align: center;
         }
         .navSubText {

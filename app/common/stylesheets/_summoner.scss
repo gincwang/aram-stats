@@ -77,6 +77,9 @@
 .summaryStyle {
     margin-top: 157px;
     text-align: center;
+    @media screen and (max-width: $phone){
+        margin-top: 217px;
+    }
 }
 
 .summaryStyleKDA {
@@ -195,7 +198,7 @@
     left: 15px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: $phone){
     .topThreeChampionUl {
         flex-flow: column;
     }
